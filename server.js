@@ -56,21 +56,22 @@ app.get("/", function(req, res) {
     // Each time the user "scrapes", this will remove any article the user hasn't previously saved
     db.Article.find({"savedNews":false}).remove().exec();
 
-    request("http://www.nytimes.com/", function(error, response, html) {
+    request("http://local.theonion.com/", function(error, response, html) {
         var newArray = [];
         var entry = {};
         var $ = cheerio.load(html);
 
         $("article").each(function(i, element) {
             // This will only allow 10 results
-            if (i >= 10) {
+            if (i >= 20) {
                return false;
             }
             var result = {};
             
-            result.title = $(this).children('h2').children('a').text().trim();
-            result.link = $(this).children('h2').children('a').attr('href');
-            result.excerpt = $(this).children('p.summary').text().trim();
+            result.image = $(this).find('source').attr('data-srcset');
+            result.title = $(this).find('h1').children('a').text();
+            result.link = $(this).find('h1').children('a').attr('href');
+            result.excerpt = $(this).find('p').text().trim();
             result.savedNews = false;
 
             entry = new db.Article(result);
@@ -233,5 +234,5 @@ app.post("/notes/delete/:id.:article", function(req, res) {
 
 // Start the server
 app.listen(PORT, function() {
-  console.log("NYT Scraper running on port " + PORT + "!");
+  console.log("Onion Scraper running on port " + PORT + "!");
 });

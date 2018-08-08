@@ -1,6 +1,7 @@
 <div class="row">
     {{#each newsStuff}}
         <div class="col-md-12 rowArea">
+            <img src= {{image}} class = 'articleimg'>
             <a href= {{link}}> <h5>{{title}}</h5></a>
             <p>{{excerpt}}</p>
             <a href="/notes/{{_id}}" class="btn btn-success btn-sm" role="button">Goto Notes for this Article</a>
