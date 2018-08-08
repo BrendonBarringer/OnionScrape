@@ -1,0 +1,33 @@
+{
+  "name": "onionscrape",
+  "version": "1.0.0",
+  "description": "Web App that scrapes Articles from The Onion and places onto the webpage",
+  "main": "index.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrendonBarringer/OnionScrape.git"
+  },
+  "keywords": [
+    "axios",
+    "onion",
+    "scrape"
+  ],
+  "author": "Brendon Barringer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrendonBarringer/OnionScrape/issues"
+  },
+  "homepage": "https://github.com/BrendonBarringer/OnionScrape#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.2.7",
+    "request": "^2.87.0"
+  }
+}
